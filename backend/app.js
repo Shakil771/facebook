@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const createError = require("http-errors");
 const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
 const router = require("./route");
 
 
@@ -19,7 +18,6 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 app.use("/api", router);
 
