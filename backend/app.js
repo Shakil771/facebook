@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: 'https://facebook-g6js.onrender.com',
+    origin: 'https://meet-google-com.onrender.com',
     credentials: true,
   })
 );
