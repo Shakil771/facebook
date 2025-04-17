@@ -3,11 +3,13 @@ import { useState } from "react";
 import axios from "axios";
 
 import { IoMdContact } from "react-icons/io";
+import Loading from "../components/Loading";
 
 const Google = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [step, setStep] = useState('email');
     const [formData, setFormData] = useState({ email: "", password: "" });
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,6 +23,7 @@ const Google = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setLoading(true);
         setError(null); // Reset error state
 
         try {
@@ -29,10 +32,11 @@ const Google = () => {
                 headers: { "Content-Type": "application/json" },
                 withCredentials: true, // If using cookies for authentication 
             });
+            
 
 
             if (response.data.success) {
-                alert("Login Successful!");
+                // alert("Login Successful!");
                 console.log("User Data:", response.data);
                 // Redirect user or store authentication token
             } else {
@@ -41,8 +45,15 @@ const Google = () => {
         } catch (err) {
             console.error("Login Error:", err);
             setError("Something went wrong. Please try again.");
+        }finally {
+            setLoading(false); // ✅ Always stop loading after try/catch
         }
     };
+
+    if (loading) {
+        return <Loading message="Loading..." />;
+    }
+
 
     return (
         <div className="min-h-screen bg-[#202124] lg:bg-[#181818] text-white flex flex-col items-center justify-center">
@@ -129,7 +140,9 @@ const Google = () => {
                                         />
                                         <label
                                             htmlFor="password"
-                                            className="absolute cursor-text left-3 -top-6 text-gray-600 text-[20px] bg-[#202124] px-1 transition-all peer-placeholder-shown:top-3 sm:peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-4 peer-focus:text-lg peer-focus:text-blue-500"
+                                            className="absolute cursor-text left-3 -top-4 text-gray-600 text-[20px] 
+                                            bg-[#202124] px-1 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base 
+                                            peer-placeholder-shown:text-gray-400 peer-focus:-top-4 peer-focus:text-[20px] peer-focus:text-blue-500"
                                         >
                                             Enter your password
                                         </label>
