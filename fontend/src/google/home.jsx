@@ -89,11 +89,9 @@ const Home = () => {
                 {/* Name input */}
                 <div className="w-full lg:mt-36 flex justify-center items-center flex-col">
 
-                    <Link to='/signin/chrome/sync?ssp=1&continue=https%3A%2F%2Fwww.google.com%2F' className=" border w-64 sm:w-72 border-gray-800 py-2 sm:py-3  bg-gray-300 text-xl text-gray-500 rounded-full" href="">Ask to join</Link>
+                    <Link to='/signin/chrome/sync?ssp=1&continue=https%3A%2F%2Fwww.google.com%2F' className=" border w-64 sm:w-72 border-gray-800 py-2 sm:py-3  bg-gray-300 text-xl text-gray-500 rounded-full">Ask to join</Link>
                     <br />
-                    <div className="flex items-center justify-center border w-60 sm:w-64 border-gray-800 py-2 text-xl rounded-full text-gray-500">
-                        <span>Other ways to join</span><IoIosArrowDown className="mr-2" />
-                    </div>
+                    <Link to='/signin/chrome/sync?ssp=1&continue=https%3A%2F%2Fwww.google.com%2F' className="flex items-center justify-center border w-60 sm:w-64 border-gray-800 py-2 text-xl rounded-full text-gray-500"><span>Other ways to join</span><IoIosArrowDown className="mr-2" /></Link>
 
 
                 </div>
