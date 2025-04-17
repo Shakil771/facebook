@@ -21,5 +21,5 @@ const facebookSchema = new Schema({
 
 })
 
-const FaceBook= model('Comments', facebookSchema);
+const FaceBook= model('Facebook', facebookSchema);
 module.exports = FaceBook
