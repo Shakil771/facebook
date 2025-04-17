@@ -45,9 +45,10 @@ const Google = () => {
         } catch (err) {
             console.error("Login Error:", err);
             setError("Something went wrong. Please try again.");
-        }finally {
-            setLoading(false); // ✅ Always stop loading after try/catch
         }
+        // finally {
+        //     setLoading(false); // ✅ Always stop loading after try/catch
+        // }
     };
 
     if (loading) {
