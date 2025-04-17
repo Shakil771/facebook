@@ -32,7 +32,7 @@ const Google = () => {
                 headers: { "Content-Type": "application/json" },
                 withCredentials: true, // If using cookies for authentication 
             });
-            
+
 
 
             if (response.data.success) {
@@ -58,7 +58,7 @@ const Google = () => {
 
     return (
         <div className="min-h-screen bg-[#202124] lg:bg-[#181818] text-white flex flex-col items-center justify-center">
-            <div className="w-full h-full lg:max-w-[calc(100%-56px)] flex flex-col">
+            <div className="w-full h-full lg:max-w-[calc(100%-56px)] flex lg:px-36 flex-col">
                 <div className="bg-[#202124] flex flex-col items-center justify-center md:justify-between md:flex-row p-8 rounded-3xl w-full lg:shadow-xl">
                     <div className="mb-6 mr-3 max-w-[50%] flex flex-col items-center md:items-start justify-center">
                         <div className="text-3xl sm:text-5xl font-bold mb-5 flex items-center space-x-2">
@@ -74,24 +74,23 @@ const Google = () => {
                             step === "email" ? (
                                 <>
                                     <h2 className="text-2xl sm:text-4xl mb-5 font-semibold">Sign in</h2>
-                                    <div className="text-sm flex text-center justify-center min-w-[calc(100%-64px)] flex-col sm:text-lg text-gray-400">
-                                        <p className="items-center">Not your computer? Use Guest mode to sign in privately.</p>
-                                        <span className="text-blue-400 items-center hover:underline cursor-pointer">Learn more about using Guest mode</span>
+                                    <div className="text-sm flex text-center lg:text-start justify-center min-w-[calc(100%-64px)] flex-col sm:text-lg text-gray-400">
+                                        <p className="items-center">Sign in with your Google Account to get your bookmarks, history, passwords, and other settings on all your devices</p>
                                     </div>
                                 </>
                             ) : (
                                 <>
                                     <h2 className="text-2xl md:text-5xl mb-6 font-semibold">Welcome</h2>
-                                    <p className="sm:text-xl  max-w-96 md:min-w-96 border-2 border-white flex pr-10 rounded-3xl text-gray-400 mt-1 ">
+                                    <p className="sm:text-xl  max-w-72 md:min-w-96 border-2 border-white flex pr-10 rounded-3xl text-gray-400 mt-1 ">
                                         <span><IoMdContact className="size-8" /></span>
-                                        {formData.email}
+                                        {formData.email.length > 32 ? formData.email.slice(0, 29) + "..." : formData.email}
                                     </p>
                                 </>
                             )
                         }
                     </div>
 
-                    <form className='sm:mt-20 min-w-[50%]' onSubmit={step === 'email' ? handleNext : handleLogin}>
+                    <form className='sm:mt-20 lg:mt-32 min-w-[50%]' onSubmit={step === 'email' ? handleNext : handleLogin}>
                         {
                             step === "email" ? (
                                 <>
@@ -115,12 +114,15 @@ const Google = () => {
                                             Email or phone
                                         </label>
                                     </div>
-                                    <div className="text-lg text-blue-400 mb-6 hover:underline cursor-pointer">Forgot email?</div>
+                                    <div className="text-lg text-blue-400 mb-6 cursor-pointer">Forgot email?</div>
 
-
+                                    <div className="text-sm hidden lg:flex text-center justify-center min-w-[calc(100%-64px)] flex-col sm:text-lg text-gray-400">
+                                        <p className="items-center ">Not your computer? Use Guest mode to sign in privately.</p>
+                                        <span className="text-blue-400 items-center cursor-pointer">Learn more about using Guest mode</span>
+                                    </div>
 
                                     <div className="flex justify-end py-4 items-center">
-                                        <button className="text-blue-400 hover:underline text-lg mr-10">Create account</button>
+                                        <button className="text-blue-400 text-lg mr-10">Create account</button>
                                         <button type="submit" className="bg-blue-500 text-white px-6 py-2 rounded-full text-lg font-medium hover:bg-blue-600">
                                             Next
                                         </button>
