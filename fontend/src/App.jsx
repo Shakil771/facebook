@@ -1,15 +1,12 @@
 
-import './App.css'
-// import Facebook from './facebook/facebook'
-import Google from './google/google'
-import Password from './google/password'
+import { Outlet } from 'react-router-dom'
+
 
 
 function App() {
 
   return (
-    // <Password />
-    < Google />
+    <Outlet />
   )
 }
 
